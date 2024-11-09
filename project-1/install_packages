@@ -8,7 +8,7 @@
 # Sources:
 #   [1]: Pacman -f - https://wiki.archlinux.org/title/Pacman
 #   [2]: While read - https://earthly.dev/blog/bash-read-files/ and https://stackoverflow.com/questions/5057083/read-a-file-using-a-bash-script
-#   [3]: Using pacman -Qs - Pacman Manul
+#   [3]: Using pacman -Qs - Pacman Manual
 # ================================
 
 # This will set the path to the packages list file
