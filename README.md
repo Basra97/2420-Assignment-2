@@ -2,7 +2,7 @@
 
 ### Introduction
 
-This assignment involves creating two Bash scripts designed to automate essential system administration tasks in a Unix environment. These scripts will simplify system setup and user management, focusing on best practices for script clarity, error handling, and command-line flexibility.
+This assignment involves creating two Bash scripts designed to automate essential system administration tasks in a Unix environment. These scripts will simplify system setup and user management
 
 1. Configuration Scripts: `project-1` automates the installation of essential software and the linking of configuration files from a remote Git repository.
 
@@ -39,7 +39,7 @@ These scripts are designed for an Arch Linux environment.
 
 * The user must have access to `sudo` or `root` user privileges.
 
-The user also needs `git` installed to clone the remote repository.
+* The user also needs `git` installed to clone the remote repository.
 
 You can download git with the following command
 
@@ -49,8 +49,8 @@ sudo pacman -S git  # For Arch Linux users
 ```
 
 >[!NOTE]
- This project requires a few additional dependencies beyond the standard requirements.
- fzf is a command-line fuzzy finder. The command fzf is used in the .bashrc file  which is used in our symbolic link file.
+ This project requires a dependencies.
+ fzf is a text selctor and fzf is used in the .bashrc file  which is used in our `symlink_script` file.
 
 
 To install `fzf`, copy and run the following command
@@ -59,7 +59,7 @@ To install `fzf`, copy and run the following command
   ``` 
   sudo pacman -Syu fzf
   ```
-  
+
 
 ### System Setup Configuration Scripts
 
@@ -94,7 +94,9 @@ Usage:
   -c, --symlink     # Executes the symlink_script file
 ```
 
-To use the usage options above
+To use the usage options see below
+
+> **Important**: Must use sudo to run command
 
 ```
 sudo ./main_script -t
@@ -128,7 +130,7 @@ The  `new-user_script` file is designed to automate the process of creating a ne
 >[!NOTE]
 These scripts are designed for an Arch Linux environment.
 
-The user must have access to `sudo` or `root` user privileges.
+- The user must have access to `sudo` or `root` user privileges.
 
 ### New User Script 
 
@@ -147,6 +149,9 @@ To gain permissions to run the script, copy the command below
 ```
 
 To run the command, use the code below. 
+
+> **Important**: Must use sudo to run command
+
 
 ``` 
 sudo ./new-user_script -u User -s shell(/bin/bash) -g group -i "Information on User"
@@ -167,7 +172,9 @@ usage:
   exit 1
 ```
 
-To use the usage options
+
+* To use the usage options
+
 
 ```sudo ./new-user_script -u username```
 
