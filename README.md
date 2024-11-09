@@ -24,7 +24,7 @@ This assignment involves creating two Bash scripts designed to automate essentia
 
 `project-1` streamlines the setup of a new system like installing software packages, creating symbolic links to certain files.
 
-The `list_packages` file cotains the packages that need to be added by the system.
+The `list_packages` file contains the packages that need to be added by the system.
 
 The `install_packages` is used for the installation of the software packages (`kakoune` and `tmux`)
 
@@ -32,12 +32,12 @@ The `symlink_script` file creates symbolic link for config files such as ~/.conf
 
 The `main_script` calls both `install_packages` and `symlink_script` 
 
-### User Requirments 
+### User Requirements 
 
 >[!NOTE]
 These scripts are designed for an Arch Linux environment.
 
-* The user must have access to `sudo` or `root` user priviledges.
+* The user must have access to `sudo` or `root` user privileges.
 
 The user also needs `git` installed to clone the remote repository.
 
@@ -45,15 +45,25 @@ You can download git with the following command
 
 ```
 sudo pacman -S git  # For Arch Linux users
+
 ```
+>[!NOTE]
+ This project requires a few additional dependencies beyond the standard requirements.
+ fzf is a command-line fuzzy finder. The command fzf is used in the .bashrc file  which is used in our symbolic link file.
+
+	To install fzf, copy and run the following command:
+
+  ``` 
+  sudo pacman -Syu fzf
+  ```
 
 ### System Setup Configuration Scripts
 
 To run the configuration scripts
 
-* The user must have `sudo` or `root` user priviledges.
+* The user must have `sudo` or `root` user privileges.
 
-* The user must have a appropriate user home directory to clone the repository. 
+* The user must have an appropriate user home directory to clone the repository. 
 
 * Clone the repository below into your user home directory.
 
@@ -107,20 +117,20 @@ sudo ./main_script -c
 
 `project-2` contains a script file that creates new users. 
 
-The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a gorup and configuring the user a password. 
+The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a group and configuring the user a password. 
 
-### User Requirments 
+### User Requirements 
 
 >[!NOTE]
 These scripts are designed for an Arch Linux environment.
 
-The user must have access to `sudo` or `root` user priviledges.
+The user must have access to `sudo` or `root` user privileges.
 
 ### New User Script 
 
 To run the new user script you must use `sudo` or `root`
 
-* Clone the repository below into your user home directory if you havent already.
+* Clone the repository below into your user home directory if you haven’t already.
 
 ```
 https://github.com/Basra97/2420-Assignment-2.git
