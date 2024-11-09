@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 
 
+# ================================
+# File Name: symlink_script
+# Author: Karnveer Basra
+# Created: 05-11-2024
+# Description: Script that creates symbolic links to configuration files
+#   [1]: EUID checker - https://nick3499.medium.com/bash-uid-0-root-user-confirmation-c091ca6ca216#:~:text=The%20if%20%5B%20%24UID%20%2Dne,echo%20%24UID%20will%20return%200%20.
+#   [2]: Man sudo - $SUDO_USER
+#   [3]: Creating Symbolic Links - https://linuxhandbook.com/symbolic-link-linux/
+#   [4]: ln command - https://linuxize.com/post/how-to-create-symbolic-links-in-linux-using-the-ln-command/
+# ================================
+
 # Determines the users home directory based on permissions like sudo and root.
 if [[ $SUDO_USER ]]; then
   echo "Script is running with sudo by $SUDO_USER" 
