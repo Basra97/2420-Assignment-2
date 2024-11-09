@@ -57,9 +57,9 @@ To gain permissions to execute the scripts, copy and run the commands below
 Usage: 
   echo "[-t] [-h] [-p] [-c]"
   -t  --two scripts # Execute the two scripts install_packages + symlink_script"
-  -h, --help          # Show help"
+  -h, --help        # Show help"
   -p, --packages    #  Run the install_packages script"
-  -c, --symlink      # Executes the symlink_script file
+  -c, --symlink     # Executes the symlink_script file
 ```
 
 To use the usage options above
@@ -78,6 +78,77 @@ sudo ./main_script -c
 ```
 
 ### Project 2: New User Script
+
+#### Folder Content
+
+1. `new-user_script`
+
+#### Script Information
+
+The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a gorup and configuring the user a password. 
+
+### New User Script 
+
+To run the new user script
+
+* The user must have access to `sudo` or `root` user priviledges.
+
+* Clone the repository below into your user home directory.
+
+```
+https://github.com/Basra97/2420-Assignment-2.git
+
+```
+To gain permissions to run the script, copy the command below
+
+```
+ sudo chmod u+x new-user_script
+```
+To run the command, use the code below. 
+
+``` 
+sudo ./new-user_script -u User -s shell(/bin/bash) -g group -i "Information on User"
+``` 
+
+```
+usage:
+  echo "[-u] [-s] [-g] [-h] [-i]"
+ -u -username  Username for the new user"
+ -s -shell     Shell for the user"
+ -g -groups    Add additional groups"
+ -h -help      Show Help Information"
+ -i -information Information about the user"
+  exit 1
+```
+
+To use the usage options
+
+`sudo ./new-user_script -u username`
+`sudo ./new-user_script -s shell`
+`sudo ./new-user_script -g groups`
+`sudo ./new-user_script -h help`
+`sudo ./new-user_script -i information`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
