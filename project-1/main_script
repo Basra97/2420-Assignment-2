@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+# This will check if the user is running the script with root or sudo
+
+if [[ "$UID" -ne 0 ]]; then
+    # if its not being ran with correct privileges, it will print the message
+  echo "This script must be run as root. Please use sudo."
+  exit 1
+fi
+
+# Defining the usage function for help details
+usage() {
+  echo "Usage: $0 [-t] [-h] [-p] [-c]"
+  echo ""
+  echo "    -t  --two scripts   Execute the two scripts install_packages + symlink_script"
+  echo "    -h, --help          Show help"
+  echo "    -p, --packages      Run the install_packages script"
+  echo "    -c, --symlink       Executes the symlink_script"
+  echo ""
+  exit 1
+}
+
+#getopts to get the options above
+while getopts ":thpc" opt; do
+  case "${opt}" in
+    t) # Execution of both scripts install_packages and symlink_script
+      echo "Executing install_packages and symlink_script"
+      ./install_packages
+      ./symlink_script
+      exit 0
+      ;;
+    h) # Displays help information
+      usage
+      ;;
+    p) # Only runs the install_packages script
+      echo "Running install_packages script"
+      ./install_packages
+      exit 0
+      ;;
+    c) # Executes symlink_script only
+      echo "Executing symlink_script"
+      ./symlink_script
+      exit 0
+      ;;
+    
+    ?) # Invalid option 
+      echo "Invalid Option, Refer to Usage -h"
+      usage
+      ;;
+  esac
+done
+
+# Checks if no aruguments or addiotional arguments
+shift $((OPTIND - 1))
+
+# Check if there are positional parameters or not
+if [[ $# -lt 1 ]]; then
+  echo "You need to provide an option -t, -h, -p or -c"
+  exit 1
+fi
