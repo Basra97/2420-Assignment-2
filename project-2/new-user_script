@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+
+# Default shell for the new user
+shell="/bin/bash"
+# Information about the user
+information="Regular User"
+
+# This shows the usage function for help details
+usage() {
+  echo "Usage: $0 [-u] [-s] [-g] [-h] [-i]"
+  echo "  -u -username  Username for the new user"
+  echo "  -s -shell     Shell for the user"
+  echo "  -g -groups    Add additional groups"
+  echo "  -h -help      Show Help Information"
+  echo "  -i -information Information about the user"
+  exit 1
+}
+
+# Checks if the script is run with root or sudo privileges 
+if [[ "$UID" -ne 0 ]]; then
+  echo "This script must be run as root. Please use sudo."
+  exit 1
+fi
+
+# getopts to process arguments using getopts 
+while getopts ":u:s:g:h:i" opt; do
+  case $opt in
+        # Sets the username and saves it
+    u) username="$OPTARG" 
+       ;;      
+       # This sets the shell
+    s) shell="$OPTARG" 
+       ;;     
+       # This sets additional groups    
+    g) groups="$OPTARG" 
+       ;; 
+       # Shows help information        
+    h) help="$OPTARG"
+       ;;  
+       # Holds information about the user      
+    i) information="$OPTARG"
+       ;;
+    ?)
+       echo "Invalid Option, Refer to Usage -h"
+       usage # Shows usage information
+       ;;
+    *) usage
+  esac
+done
+
+# Checks if no arguments or additional arguments
+shift $((OPTIND - 1))
+
+# Makes sure a username is provided and if not a error message will be shown
+if [[ -z "$username" ]]; then
+  echo "You must provide a username"
+  usage
+  exit 0
+fi
+
+# Find the next available uid starting from 1000
+uid=1000
+while cut -d : -f3 /etc/passwd | grep -qx "$uid"; do 
+    # This adds 1 to the UID until we find a unused ID
+    uid=$((uid + 1))
+done
+
+# If their is no GID, use the same number from UID
+if [[ -z "$gid" ]]; then
+  gid="$uid"
+fi
+
+# This sets the home directory for the new user
+home_dir="/home/$username"
+
+# creates primary group for the user by adding it to /etc/group
+  echo "$username:x:$gid:" >> /etc/group
+
+# Adds user to /etc/passwd
+  echo "$username:x:$uid:$gid:$information:$home_dir:$shell" >> /etc/passwd
+
+# Add user to /etc/shadow if not already present
+  echo "$username::::::::" >> /etc/shadow
+
+
+# Check and create home directory
+if mkdir -p "$home_dir"; then
+  # If a directory is made succesfully the following will print  
+  echo "A home directory was created successfully"  
+else
+  echo "Failed to create home directory." 
+  exit 1
+fi
+
+# This copies default files from /etc/skel if it exists
+  cp -r /etc/skel/. "$home_dir" 
+
+# Handle additional groups by looping through each additional gorup the user should be in
+for group in $groups; do
+  sed -i "/^$group:/ s/$/,$username/" /etc/group
+done
+
+# Set ownership and permissions for the home directory
+chown "$username:$username" "$home_dir"
+# This sets permissions so only the user has access
+chmod 700 "$home_dir" 
+
+# This sets the user's password
+echo "Set password for the new user $username:"
+passwd "$username"
+
