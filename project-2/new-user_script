@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 # ================================
 # File Name: symlink_script
 # Author: Karnveer Basra
@@ -14,7 +13,7 @@
 #   [6] EUID in user add script - https://dev.to/amaraiheanacho/user-creation-in-bash-script-1617
 #   [7] Grep - https://www.gnu.org/software/grep/manual/grep.html
 #   [8] cut command - https://www.geeksforgeeks.org/cut-command-linux-examples/
-#   [9] Understanding Sed Commandshttps://unix.stackexchange.com/questions/583882/understanding-a-sed-command-sed-s-s-s-g
+#   [9] Understanding Sed Commands https://unix.stackexchange.com/questions/583882/understanding-a-sed-command-sed-s-s-s-g
 # ================================
 
 # Default shell for the new user
@@ -90,10 +89,10 @@ fi
 # This sets the home directory for the new user
 home_dir="/home/$username"
 
-# creates primary group for the user by adding it to /etc/group
+# creates a group for the user by adding it to /etc/group
   echo "$username:x:$gid:" >> /etc/group
 
-# Adds user to /etc/passwd
+# Adds username, information, shell to /etc/passwd
   echo "$username:x:$uid:$gid:$information:$home_dir:$shell" >> /etc/passwd
 
 # Add user to /etc/shadow if not already present
@@ -105,6 +104,7 @@ if mkdir -p "$home_dir"; then
   # If a directory is made succesfully the following will print  
   echo "A home directory was created successfully"  
 else
+  # If home directory couldnt be created, it will print the following.
   echo "Failed to create home directory." 
   exit 1
 fi
@@ -114,6 +114,7 @@ fi
 
 # Handle additional groups by looping through each additional gorup the user should be in
 for group in $groups; do
+  # adds the username to the different groups in /etc/group
   sed -i "/^$group:/ s/$/,$username/" /etc/group
 done
 
