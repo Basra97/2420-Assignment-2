@@ -13,7 +13,7 @@ This assignment involves creating two Bash scripts designed to automate essentia
 
 
 
-### Project 1: Configuration Scripts
+## Project 1: Configuration Scripts
 
 ---
 
@@ -21,12 +21,33 @@ Project-1 streamlines the setup of a new system like installing software package
 
 #### Folder Content
 
-1. `install_packages`
-2. `list_packages`
-3. `main_script`
-4. `symlink_script`
+1. `list_packages`
+2. `install_packages`
+3. `symlink_script`
+4. `main_script`
+
 
 #### Script Information
+
+The `list_packages` file cotains the packages that need to be added by the system.
+
+The `install_packages` is used for the installation of the software packages (`kakoune` and `tmux`)
+
+The `symlink_script` file creates symbolic link for config files such as ~/.config/kak/kakrc and ~/.bashrc. Symbolic links act as a shortcut to files or directories. 
+
+The `main_script` calls both `install_packages` and `symlink_script` 
+
+#### User Requirments 
+
+* The user must have access to `sudo` or `root` user priviledges.
+
+The user also needs `git` installed to clone the remote repository.
+
+You can download git with the following command
+
+```
+sudo pacman -S git  # For Arch Linux users
+```
 
 
 ### System Setup Configuration Scripts
@@ -77,7 +98,9 @@ sudo ./main_script -p
 sudo ./main_script -c
 ```
 
-### Project 2: New User Script
+## Project 2: New User Script
+
+---
 
 #### Folder Content
 
@@ -123,11 +146,15 @@ usage:
 
 To use the usage options
 
-`sudo ./new-user_script -u username`
-`sudo ./new-user_script -s shell`
-`sudo ./new-user_script -g groups`
-`sudo ./new-user_script -h help`
-`sudo ./new-user_script -i information`
+```sudo ./new-user_script -u username```
+
+```sudo ./new-user_script -s shell```
+
+```sudo ./new-user_script -g groups```
+
+```sudo ./new-user_script -h help```
+
+```sudo ./new-user_script -i information```
 
 
 
