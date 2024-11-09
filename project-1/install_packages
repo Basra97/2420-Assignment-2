@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+# ================================
+# File Name: install_packages
+# Author: Karnveer Basra
+# Created: 04-11-2024
+# Description: script that reads the plain text file list_packages.txt and it installs each listed package.
+# Sources:
+#   [1]: Pacman -f - https://wiki.archlinux.org/title/Pacman
+#   [2]: While read - https://earthly.dev/blog/bash-read-files/ and https://stackoverflow.com/questions/5057083/read-a-file-using-a-bash-script
+#   [3]: Using pacman -Qs - Pacman Manul
+# ================================
+
 # This will set the path to the packages list file
 
 packages=./list_packages.txt
