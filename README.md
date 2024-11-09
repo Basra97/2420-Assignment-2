@@ -34,6 +34,9 @@ The `main_script` calls both `install_packages` and `symlink_script`
 
 ### User Requirments 
 
+>[!NOTE]
+These scripts are designed for an Arch Linux environment.
+
 * The user must have access to `sudo` or `root` user priviledges.
 
 The user also needs `git` installed to clone the remote repository.
@@ -108,13 +111,16 @@ The  `new-user_script` file is designed to automate the process of creating a ne
 
 ### User Requirments 
 
+>[!NOTE]
+These scripts are designed for an Arch Linux environment.
+
 The user must have access to `sudo` or `root` user priviledges.
 
 ### New User Script 
 
 To run the new user script you must use `sudo` or `root`
 
-* Clone the repository below into your user home directory.
+* Clone the repository below into your user home directory if you havent already.
 
 ```
 https://github.com/Basra97/2420-Assignment-2.git
@@ -131,6 +137,8 @@ To run the command, use the code below.
 ``` 
 sudo ./new-user_script -u User -s shell(/bin/bash) -g group -i "Information on User"
 ``` 
+>[!NOTE]
+ Replace username, group, and "User Information" with the appropriate details for the new user.
 
 ### Usage Options Examples
 
