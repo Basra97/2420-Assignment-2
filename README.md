@@ -4,22 +4,15 @@
 
 This assignment involves creating two Bash scripts designed to automate essential system administration tasks in a Unix environment. These scripts will simplify system setup and user management, focusing on best practices for script clarity, error handling, and command-line flexibility.
 
-1. Configuration Scripts: A script to automate the installation of essential software and the linking of configuration files from a remote Git repository.
+1. Configuration Scripts: `project-1` automates the installation of essential software and the linking of configuration files from a remote Git repository.
 
-2. User Creation Script: A script to automate user account creation, including setting up groups, creating home directories, and configuring shell settings.
-
-### Table of Contents
-
-
-
+2.  New User Script: `project-2` is used to automate user account creation, including setting up groups, creating home directories, and configuring the users shell settings.
 
 ## Project 1: Configuration Scripts
 
 ---
 
-Project-1 streamlines the setup of a new system like installing software packages, creating symbolic links to certain files.
-
-#### Folder Content
+### Folder Content
 
 1. `list_packages`
 2. `install_packages`
@@ -27,7 +20,9 @@ Project-1 streamlines the setup of a new system like installing software package
 4. `main_script`
 
 
-#### Script Information
+### Script Information
+
+`project-1` streamlines the setup of a new system like installing software packages, creating symbolic links to certain files.
 
 The `list_packages` file cotains the packages that need to be added by the system.
 
@@ -37,7 +32,7 @@ The `symlink_script` file creates symbolic link for config files such as ~/.conf
 
 The `main_script` calls both `install_packages` and `symlink_script` 
 
-#### User Requirments 
+### User Requirments 
 
 * The user must have access to `sudo` or `root` user priviledges.
 
@@ -48,7 +43,6 @@ You can download git with the following command
 ```
 sudo pacman -S git  # For Arch Linux users
 ```
-
 
 ### System Setup Configuration Scripts
 
@@ -102,19 +96,23 @@ sudo ./main_script -c
 
 ---
 
-#### Folder Content
+### Folder Content
 
 1. `new-user_script`
 
-#### Script Information
+### Script Information
+
+`project-2` contains a script file that creates new users. 
 
 The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a gorup and configuring the user a password. 
 
+### User Requirments 
+
+The user must have access to `sudo` or `root` user priviledges.
+
 ### New User Script 
 
-To run the new user script
-
-* The user must have access to `sudo` or `root` user priviledges.
+To run the new user script you must use `sudo` or `root`
 
 * Clone the repository below into your user home directory.
 
@@ -127,11 +125,14 @@ To gain permissions to run the script, copy the command below
 ```
  sudo chmod u+x new-user_script
 ```
+
 To run the command, use the code below. 
 
 ``` 
 sudo ./new-user_script -u User -s shell(/bin/bash) -g group -i "Information on User"
 ``` 
+
+### Usage Options Examples
 
 ```
 usage:
@@ -155,9 +156,6 @@ To use the usage options
 ```sudo ./new-user_script -h help```
 
 ```sudo ./new-user_script -i information```
-
-
-
 
 
 
