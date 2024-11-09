@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+
+
+# Determines the users home directory based on permissions like sudo and root.
+if [[ $SUDO_USER ]]; then
+  echo "Script is running with sudo by $SUDO_USER" 
+  home_path="/home/$SUDO_USER" # This sets the home directory to the user that used sudo
+# Checks if the user is root with EUID and if ID is 0, it is root
+elif [[ "$EUID" -eq 0 ]]; then 
+  echo "Script running as root"
+  home_path="/root" 
+else
+  # If sudo or root user isnt running the script then it is ran by a regular user
+  echo "Script running as regular user)" 
+  home_path="$HOME" # This sets home_path to root
+fi
+
+# file_dir is where the starting cloned files are located 
+file_dir="$home_path/2420-Assignment-2/project-1/2420-as2-starting-files"
+
+# This creates the needed directories
+
+# Creates a ~/bin directory
+mkdir -p "$home_path/bin"      
+
+# Creates a ~/config/kak directory
+mkdir -p "$home_path/.config/kak"     
+
+# Creates a ~/.config/tmux directory for its condfiguration files
+mkdir -p "$home_path/.config/tmux"   
+
+# This loops through the files in bin and create symlinks in ~/bin directory
+for file in $file_dir/bin/*; do
+  # Checks if symbolic link exists, if not it will create a symbolic link
+  if [[ -L "$home_path/bin/$(basename "$file")" ]]; then
+    echo "Symbolic link already exists"
+  else
+    ln -s "$file" "$home_path/bin/$(basename "$file")"
+    echo "Created symlink"
+  fi
+done
+
+# Create symbolic link for kakrc file
+if [[ -L "$home_path/.config/kak/kakrc" ]]; then
+  # if the symlink already exists, then it will say it exists
+  echo "Symbolic link for kakrc already exists"
+else
+  # If the symbolic link doesnt exist, create it.
+  ln -s "$file_dir/config/kak/kakrc" "$home_path/.config/kak/kakrc"
+  # This will display a message saying the symbolic link has been created
+  echo "Created symlink for kakrc"
+fi
+
+# Create symbolic link for tmux.conf
+if [[ -L "$home_path/.config/tmux/tmux.conf" ]]; then
+  echo "Symbolic link for tmux.conf already exists"
+else
+  ln -s "$file_dir/config/tmux/tmux.conf" "$home_path/.config/tmux/tmux.conf"
+  echo "Created symlink for tmux.conf"
+fi
+
+# Create symbolic link for .bashrc
+if [[ -L "$home_path/.bashrc" ]]; then
+  echo "Symbolic link for .bashrc already exists"
+else
+  ln -s "$file_dir/home/bashrc" "$home_path/.bashrc"
+  echo "Created symlink for .bashrc"
+fi
+
