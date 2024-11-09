@@ -18,6 +18,7 @@ if [[ $SUDO_USER ]]; then
   home_path="/home/$SUDO_USER" # This sets the home directory to the user that used sudo
 # Checks if the user is root with EUID and if ID is 0, it is root
 elif [[ "$EUID" -eq 0 ]]; then 
+  # If the script is being ran with a EUID of 0, it will set home_path to same sudo users home directory.
   echo "Script running as root"
   home_path="/root" 
 else
@@ -46,35 +47,40 @@ for file in $file_dir/bin/*; do
   if [[ -L "$home_path/bin/$(basename "$file")" ]]; then
     echo "Symbolic link already exists"
   else
+    # Creates a symbolic link for each file in ~/bin
     ln -s "$file" "$home_path/bin/$(basename "$file")"
-    echo "Created symlink"
+    echo "Created Symbolic Link"
   fi
 done
 
 # Create symbolic link for kakrc file
 if [[ -L "$home_path/.config/kak/kakrc" ]]; then
-  # if the symlink already exists, then it will say it exists
+  # if the symbolic link already exists, then it will say it exists
   echo "Symbolic link for kakrc already exists"
 else
   # If the symbolic link doesnt exist, create it.
   ln -s "$file_dir/config/kak/kakrc" "$home_path/.config/kak/kakrc"
   # This will display a message saying the symbolic link has been created
-  echo "Created symlink for kakrc"
+  echo "Created  Symbolic Link for kakrc"
 fi
 
 # Create symbolic link for tmux.conf
 if [[ -L "$home_path/.config/tmux/tmux.conf" ]]; then
+  # This checks for a symbolic link for tmux.conf
   echo "Symbolic link for tmux.conf already exists"
 else
+  # If it doesnt exist, it will create a symbolic link.
   ln -s "$file_dir/config/tmux/tmux.conf" "$home_path/.config/tmux/tmux.conf"
-  echo "Created symlink for tmux.conf"
+  echo "Created Symbolic Link for tmux.conf"
 fi
 
 # Create symbolic link for .bashrc
 if [[ -L "$home_path/.bashrc" ]]; then
+  # Check if a symbolic link for .bashrc already exists in the home directory
   echo "Symbolic link for .bashrc already exists"
 else
+  # if the symbolic link doesnt exist, it will create it. 
   ln -s "$file_dir/home/bashrc" "$home_path/.bashrc"
-  echo "Created symlink for .bashrc"
+  echo "Created Symbolic Link for .bashrc"
 fi
 
