@@ -22,15 +22,15 @@ This assignment involves creating two Bash scripts designed to automate essentia
 
 ### Script Information
 
-`project-1` streamlines the setup of a new system like installing software packages, creating symbolic links to certain files.
+* `project-1` streamlines the setup of a new system like installing software packages, creating symbolic links to certain files.
 
-The `list_packages` file contains the packages that need to be added by the system.
+* The `list_packages` file contains the packages that need to be added by the system.
 
-The `install_packages` is used for the installation of the software packages (`kakoune` and `tmux`)
+* The `install_packages` is used for the installation of the software packages (`kakoune` and `tmux`)
 
-The `symlink_script` file creates symbolic link for config files such as ~/.config/kak/kakrc and ~/.bashrc. Symbolic links act as a shortcut to files or directories. 
+* The `symlink_script` file creates symbolic link for config files such as ~/.config/kak/kakrc and ~/.bashrc. Symbolic links act as a shortcut to files or directories. 
 
-The `main_script` calls both `install_packages` and `symlink_script` 
+* The `main_script` calls both `install_packages` and `symlink_script` 
 
 ### User Requirements 
 
@@ -123,18 +123,19 @@ sudo ./main_script -c
 
 `project-2` contains a script file that creates new users. 
 
-The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a group and configuring the user a password. 
+* The  `new-user_script` file is designed to automate the process of creating a new user, this includes setting up a home directory and a user account, specify their shell, assign them a group and configuring the user a password. 
 
 ### User Requirements 
 
 >[!NOTE]
 These scripts are designed for an Arch Linux environment.
 
-- The user must have access to `sudo` or `root` user privileges.
+* The user must have access to `sudo` or `root` user privileges.
 
 ### New User Script 
 
-To run the new user script you must use `sudo` or `root`
+*To run the new user script you must use `sudo` or `root`
+
 
 * Clone the repository below into your user home directory if you haven’t already.
 
@@ -142,13 +143,13 @@ To run the new user script you must use `sudo` or `root`
 https://github.com/Basra97/2420-Assignment-2.git
 
 ```
-To gain permissions to run the script, copy the command below
+* To gain permissions to run the script, copy the command below
 
 ```
  sudo chmod u+x new-user_script
 ```
 
-To run the command, use the code below. 
+* To run the command, use the code below. 
 
 > **Important**: Must use sudo to run command
 
