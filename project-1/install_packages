@@ -16,15 +16,15 @@
 packages=./list_packages.txt
 
 # This checks if the packages file exists and if it does not it will print an error message and exit
-
 if [[ ! -f $packages ]]; then
   echo "Packages list $packages not found"
+  # if the file is missing, it will print a message and exit
   exit 1
 fi
 
 # This will loop through each package listed in the packages.txt file
 while read -r package_list; do
-
+   # Checks if the package is already installed
   if pacman -Qs "$package_list" > /dev/null; then
   
     # If the package is found, print it is already installed
@@ -32,6 +32,7 @@ while read -r package_list; do
   else
   # If the package is not found, then install the package
     echo "installing $package_list"
+    # This installs package without having to confirm
     pacman -S --noconfirm "$package_list"
   fi
 done < $packages
