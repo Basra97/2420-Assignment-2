@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+
+
+# ================================
+# File Name: main_script
+# Author: Karnveer Basra
+# Created: 06-11-2024
+# Description: Script that calls both install_packages and symlink_project
+#   [1]: UID checker - https://nick3499.medium.com/bash-uid-0-root-user-confirmation-c091ca6ca216#:~:text=The%20if%20%5B%20%24UID%20%2Dne,echo%20%24UID%20will%20return%200%20.
+#   [2]: usage, getopts, shift - https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-seven.md
+# ================================
+
 # This will check if the user is running the script with root or sudo
 
 if [[ "$UID" -ne 0 ]]; then
