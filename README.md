@@ -53,11 +53,13 @@ sudo pacman -S git  # For Arch Linux users
  fzf is a command-line fuzzy finder. The command fzf is used in the .bashrc file  which is used in our symbolic link file.
 
 
-* To install `fzf`, copy and run the following command
+To install `fzf`, copy and run the following command
+
 
   ``` 
   sudo pacman -Syu fzf
   ```
+  
 
 ### System Setup Configuration Scripts
 
