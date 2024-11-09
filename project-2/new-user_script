@@ -1,5 +1,22 @@
 #!/usr/bin/env bash
 
+
+# ================================
+# File Name: symlink_script
+# Author: Karnveer Basra
+# Created: 05-11-2024
+# Description: Script that creates symbolic links to configuration files
+#   [1]: EUID checker - https://nick3499.medium.com/bash-uid-0-root-user-confirmation-c091ca6ca216#:~:text=The%20if%20%5B%20%24UID%20%2Dne,echo%20%24UID%20will%20return%200%20.
+#   [2]: usage, getopts, shift - https://gitlab.com/cit2420/2420-notes-f24/-/blob/main/2420-notes/week-seven.md
+#   [3]: Working with options - https://learning.oreilly.com/videos/bash-shell-scripting/9780137689064/9780137689064-BSS2_04_10_01/
+#   [4]: using grep - https://www.digitalocean.com/community/tutorials/grep-command-in-linux-unix
+#   [5]: Sed - https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+#   [6] EUID in user add script - https://dev.to/amaraiheanacho/user-creation-in-bash-script-1617
+#   [7] Grep - https://www.gnu.org/software/grep/manual/grep.html
+#   [8] cut command - https://www.geeksforgeeks.org/cut-command-linux-examples/
+#   [9] Understanding Sed Commandshttps://unix.stackexchange.com/questions/583882/understanding-a-sed-command-sed-s-s-s-g
+# ================================
+
 # Default shell for the new user
 shell="/bin/bash"
 # Information about the user
